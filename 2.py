@@ -28,4 +28,5 @@ def cub():
     print(my_summ)
 
 if __name__ == '__main__':
+
     cub()
