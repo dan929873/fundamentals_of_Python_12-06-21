@@ -12,4 +12,5 @@ def declination(num):
 
 
 if __name__ == '__main__':
+
     declination(2)

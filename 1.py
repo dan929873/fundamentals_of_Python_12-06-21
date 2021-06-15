@@ -30,7 +30,7 @@ def sec(num):
     print(f"{num} с.")
 
 if __name__ == '__main__':
-    sec(99999999)
+    sec(89999999)
 
 
 
