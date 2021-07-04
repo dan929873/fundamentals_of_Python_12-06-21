@@ -14,12 +14,9 @@
 #
 # Примечание: код должен работать даже с файлами, размер которых превышает объем ОЗУ компьютера.
 
-from requests import get, utils
+content = open("nginx_logs", 'r')
+content = content.read().split('\n')
 
-response = get('https://github.com/elastic/examples/raw/master/Common%20Data%20Formats/nginx_logs/nginx_logs')
-encodings = utils.get_encoding_from_headers(response.headers)
-content = response.content.decode(encoding=encodings)
-content = content.split('\n')
 result = []
 mystr = 0 #для подсччета строк и проверки на потерю данных
 for iter in range(len(content)):
@@ -35,3 +32,5 @@ for iter in range(len(content)):
 
 print(mystr, len(content))
 print(result[0: 10])
+
+
