@@ -1,0 +1,34 @@
+my_project:
+   - settings:
+      - __init__.py
+      - dev.py
+      - prod.py
+   - mainapp:
+      - __init__.py
+      - models.py
+      - views.py
+      - templates:
+         - mainapp:
+            - base.html
+            - index.html
+   - authapp:
+      - __init__.py
+      - models.py
+      - views.py
+      - templates:
+         - authapp:
+            - base.html
+            - index.html
+
+
+#a_dictionary:
+#  a_key: a_value
+#  another_key: another_value
+#  nested_dictionary:
+#    nested_key: nested_value
+#
+#a_list:
+#  - an item
+#  - another item
+#  - 1.25
+#  - a_key: a_value
