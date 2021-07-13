@@ -17,12 +17,26 @@
 import re
 
 
+
 mail = "someone@geekbrains.ru"
 mailk = "someone@geekbrainsru"
 
 patern_name = r"^\w+"
-patern_domain = r"^@\w+"
+patern_domain = r"(?<=@)\w+.\w+"
 
+def email_parse(mail):
 
-print (re.findall(patern_name, mail))
-print (re.findall(patern_domain, mail))
+    my_res = {}
+    assert re.findall(patern_name, mail)
+    assert re.findall(patern_domain, mail)
+    # assert patern_name.findall(mail), patern_domain.findall(mail)
+
+def email_parse(email_address):
+    parsed = re.findall(r"([^@&]+)@([\w_-][\w_\.-]*\.[\w_-]{2,})$", email_address)
+    if not parsed:
+        raise ValueError(f"wrong email: {email_address}")
+    return dict(zip(["username", "domain"], parsed[0]))
+
+print(email_parse(mail))
+
+print( re.findall(r"(^\w+)@([\w_-][\w_\.-]*\.[\w_-]{2,})$", mail))
