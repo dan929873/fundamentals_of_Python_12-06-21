@@ -13,30 +13,18 @@
 # Примечание: подумайте о возможных ошибках в адресе и постарайтесь учесть их в регулярном выражении; имеет ли смысл в данном случае использовать функцию re.compile()?
 
 
-
 import re
 
 
-
 mail = "someone@geekbrains.ru"
-mailk = "someone@geekbrainsru"
-
-patern_name = r"^\w+"
-patern_domain = r"(?<=@)\w+.\w+"
-
-def email_parse(mail):
-
-    my_res = {}
-    assert re.findall(patern_name, mail)
-    assert re.findall(patern_domain, mail)
-    # assert patern_name.findall(mail), patern_domain.findall(mail)
+mail_er = "someone@geekbrainsru"
 
 def email_parse(email_address):
-    parsed = re.findall(r"([^@&]+)@([\w_-][\w_\.-]*\.[\w_-]{2,})$", email_address)
-    if not parsed:
+    patern = r"(^\w+)@((?<=@)[\w]+\.\w+)"
+    result = re.findall(patern, email_address)
+    if not result:
         raise ValueError(f"wrong email: {email_address}")
-    return dict(zip(["username", "domain"], parsed[0]))
+    return dict(zip(["username", "domain"], result[0]))
 
-print(email_parse(mail))
+print(email_parse(mail_er))
 
-print( re.findall(r"(^\w+)@([\w_-][\w_\.-]*\.[\w_-]{2,})$", mail))
