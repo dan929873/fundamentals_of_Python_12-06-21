@@ -9,3 +9,20 @@
 # Во время ввода пользователем очередного элемента необходимо реализовать проверку типа элемента.
 # Вносить его в список, только если введено число. Класс-исключение должен не позволить пользователю ввести текст (не число)
 # и отобразить соответствующее сообщение. При этом работа скрипта не должна завершаться.
+
+class NumLenExc(Exception):
+
+    def __init__(self, args):
+        try:
+            for iter in range(len(args)):
+                i = float(args[iter])
+        except ValueError:
+            print("you write not number")
+        else:
+            return i
+
+
+i = input("input data, for exit write 'q': ")
+while (i != "q"):
+    a = NumLenExc(i)
+    i = input("input data, for exit write 'q': ")
