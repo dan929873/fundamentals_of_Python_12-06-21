@@ -12,17 +12,29 @@
 
 class NumLenExc(Exception):
 
-    def __init__(self, args):
+    def __init__(self):
+        self.my_list = []
+
+
+    def get (self):
+        return self.my_list
+
+    def num(self, arg):
         try:
-            for iter in range(len(args)):
-                i = float(args[iter])
+            if arg.find('.')>0:
+                self.my_list.append(float(arg))
+            else:
+                self.my_list.append(int(arg))
         except ValueError:
             print("you write not number")
-        else:
-            return i
+
 
 
 i = input("input data, for exit write 'q': ")
+a = NumLenExc()
+
 while (i != "q"):
-    a = NumLenExc(i)
+    a.num(i)
     i = input("input data, for exit write 'q': ")
+else:
+    print(a.get())
