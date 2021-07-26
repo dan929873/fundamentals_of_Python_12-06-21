@@ -15,10 +15,15 @@ class Warehouse(ABC):
         pass
 
     def acceptance_to_the_warehouse(self, col):
-        str_name = str(self.__class__)
-        col_symb = 3    #количество символов __.
-        str_name = str_name[str_name.find('__.')+col_symb:str_name.find('\'>')]
-        Warehouse.add_store.update({str_name : col})
+        try:
+            col = int(col)
+        except ValueError:
+            print("col - it is int")
+        else:
+            str_name = str(self.__class__)
+            col_symb = 3    #количество символов __.
+            str_name = str_name[str_name.find('__.')+col_symb:str_name.find('\'>')]
+            Warehouse.add_store.update({str_name : col})
 
     def department(self, n_d):
         self.name_dep = n_d
